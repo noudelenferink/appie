@@ -1,0 +1,38 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+    <span>{{vm.title}}</span>
+    </h2>
+      <span flex></span>
+      <md-menu md-offset="0 75" md-position-mode="target-right target">
+        <md-button class="md-icon-button" aria-label="right-menu" ng-click="$mdOpenMenu()">
+          <md-icon md-svg-src="main/assets/images/soccer_shirt.svg" class="list-header-icon white" alt="Freepik from http://www.flaticon.com"></md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item ng-repeat="t in vm.registeredTeams">
+            <md-button ng-click="vm.changeSelectedTeam(t)" ng-disabled="vm.selectedTeam.TeamID == t.TeamID">
+              <span>{{t.TeamName}}</span>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-subheader>{{vm.selectedTeam.TeamName}}</md-subheader>
+    <md-list>
+      <md-list-item md-no-ink ng-repeat="pt in vm.training.Attendees | orderBy:['-HasAttended', 'SurName', 'FirstName']">
+        <div flex="10">{{$index + 1}}.</div>
+        <div flex>{{pt | fullname}}</div>
+        <div>
+          <span class="badge badge-positive" ng-class="{green: pt.HasAttended, red: !pt.HasAttended}">{{pt.HasAttended ? 'Aanwezig' : 'Afwezig'}}</span>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </ion-content>
+</ion-view>

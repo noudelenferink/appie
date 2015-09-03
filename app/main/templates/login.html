@@ -1,0 +1,28 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+          <span>{{vm.title}}</span>
+        </h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content>
+    <form name="loginForm" ng-submit="vm.loginUser()">
+      <div layout layout-sm="column">
+        <md-input-container>
+          <label>Username</label>
+          <input required ng-model="vm.username">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Password</label>
+          <input type="password" required ng-model="vm.password">
+        </md-input-container>
+      </div>
+      <md-button class="md-raised md-primary">Login</md-button>
+    </form>
+  </md-content>
+</ion-view>

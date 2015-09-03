@@ -1,0 +1,32 @@
+<md-list>
+  <md-list-item>
+    <div layout="row" flex>
+      <div flex="10" class="bold">#</div>
+      <div flex class="bold">Team</div>
+      <div flex="10" class="bold center">G</div>
+      <div flex="10" class="bold center" show-gt-sm hide>W</div>
+      <div flex="10" class="bold center" show-gt-sm hide>G</div>
+      <div flex="10" class="bold center" show-gt-sm hide>V</div>
+      <div flex="10" class="bold center">P</div>
+      <div flex="10" class="bold center" show-gt-sm hide>+</div>
+      <div flex="10" class="bold center" show-gt-sm hide>-</div>
+      <div flex="10" class="bold center" hide-gt-sm>+/-</div>
+    </div>
+    <md-divider></md-divider>
+  </md-list-item>
+  <md-list-item ng-class="{'myTeam' : r.TeamID == vm.selectedTeamID}" md-no-ink ng-repeat="r in vm.ranking | orderBy:['-Points', 'Played', '-Diff']" ng-click="showTeamDetails(r.TeamID)">
+    <div layout="row" flex>
+      <div flex="10">{{$index + 1}}.</div>
+      <div flex>{{r.TeamName}}</div>
+      <div flex="10" class="center">{{r.Played}}</div>
+      <div flex="10" class="center" show-gt-sm hide>{{r.Wins}}</div>
+      <div flex="10" class="center" show-gt-sm hide>{{r.Draws}}</div>
+      <div flex="10" class="center" show-gt-sm hide>{{r.Loses}}</div>
+      <div flex="10" class="bold center">{{r.Points}}</div>
+      <div flex="10" class="center" show-gt-sm hide>{{r.Scored}}</div>
+      <div flex="10" class="center" show-gt-sm hide>{{r.Conceded}}</div>
+      <div flex="10" class="center" hide-gt-sm>{{r.Diff}}</div>
+    </div>
+    <md-divider ng-if="!$last"></md-divider>
+  </md-list-item>
+</md-list>

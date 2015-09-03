@@ -1,0 +1,34 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+          <span>{{vm.title}}</span>
+        </h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-list>
+      <md-list-item>
+        <div class="row">
+          <div flex class="bold">Trainingsdatum</div>
+          <div flex-gt-sm="10" flex-sm="20" class="bold right">Opkomst</div>
+        </div>
+        <md-divider></md-divider>
+      </md-list-item>
+      <md-list-item md-no-ink ng-repeat="t in vm.trainings | orderBy:'-TrainingDate'" ng-click="vm.showManageTrainingDetails(t.TrainingID)">
+        <div class="row">
+          <div flex>{{t.TrainingDate | date: "dd-MM-yyyy"}}</div>
+          <div flex-gt-sm="10" flex-sm="20" class="bold right">{{t.TotalAttended == 0 ? "-" : t.TotalAttended}}</div>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </ion-content>
+  <md-button class="md-fab md-fab-bottom-right md-primary" aria-label="add-training" ng-click="vm.showCreateTraining()">
+    <i class="mdi mdi-plus"></i>
+  </md-button>
+</ion-view>

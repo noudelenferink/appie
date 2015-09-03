@@ -1,0 +1,30 @@
+<md-dialog aria-label="Teamspeler toevoegen">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Teamspeler toevoegen</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-autocomplete flex required md-input-name="autocompleteField" md-input-minlength="0" md-selected-item="vm.selectedPlayer" md-autoselect="true" md-search-text="vm.searchText" md-items="p in vm.playerSearch(vm.searchText)" md-item-text="p.PlayerName" md-floating-label="Naam">
+        <md-item-template>
+          <span md-highlight-text="vm.searchText">{{p.PlayerName}}</span>
+        </md-item-template>
+      </md-autocomplete>
+      <md-input-container>
+        <label>Ingangsdatum</label>
+        <input required type="date" ng-model="vm.effectiveDate">
+      </md-input-container>
+      <md-input-container>
+        <label>Rugnummer</label>
+        <input type="number" min="1" step="1" ng-model="vm.jerseyNumber">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelAddPlayer()">Annuleren</md-button>
+    <md-button ng-click="vm.addPlayer()" class="md-primary">Toevoegen</md-button>
+  </div>
+</md-dialog>

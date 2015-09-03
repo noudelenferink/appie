@@ -1,0 +1,110 @@
+md-toolbar h2 {
+  color: white;
+}
+
+.md-fab-tab {
+  margin-top: 56px;
+}
+
+.hidden {
+  display: none;
+}
+
+.modified {
+  background-color: rgba(0, 150, 136, 0.15);
+}
+
+.team-logo {
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.list-header-icon {
+  fill: #000;
+  fill-opacity: 0.87;
+  width: 20px;
+  height: 20px;
+}
+
+.yellow-card {
+  fill: #CDCD00;
+}
+
+.red-card {
+  fill: #9E1212;
+}
+
+.badge.green {
+  background-color: #5DAD5E;
+}
+.badge.red {
+  background-color: #9E1212;
+}
+
+.white {
+  fill: white;
+}
+
+////////////////////////////
+// Material / Ionic fixes //
+////////////////////////////
+.md-default-theme .md-input {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.117647);
+}
+
+ion-content {
+  top: 63px !important;
+}
+
+body {
+  overflow-y: initial !important;
+}
+
+.mdi {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.md-toolbar-tools md-select .md-select-label.md-placeholder {
+  color: white;
+}
+
+.md-toolbar-tools md-select:not([disabled]):focus .md-select-label {
+  color: white;
+}
+
+md-icon {
+    color: rgba(0, 0, 0, 0);
+}
+
+///////////////////////
+// Performance fixes //
+///////////////////////
+.md-sidenav-backdrop {
+    opacity: 0 !important;
+}
+
+md-sidenav.md-closed-add,
+md-sidenav.md-closed-remove {
+    -webkit-transition: all .4s cubic-bezier(0.25, .8, .25, 1) !important;
+    transition: all .4s cubic-bezier(0.25, .8, .25, 1) !important;
+}

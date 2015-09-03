@@ -1,0 +1,64 @@
+<section layout="row" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <!-- md-is-locked-open="$mdMedia('gt-md')"> -->
+    <md-toolbar>
+      <h2 class="md-toolbar-tools">{{vmNav.currentUser.username}}</h2>
+    </md-toolbar>
+    <md-content layout="column">
+      <md-list class="nav-list">
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.home">
+            Home
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.competitions.content">
+            Competities
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.trainings">
+            Trainingen
+          </md-button>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item ng-if="!vmNav.isUserLoggedIn">
+          <md-button ui-sref-active="active" ui-sref="main.login">
+            Login
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.season">
+            Seizoenen
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.competition-manager">
+            Competitiebeheer
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.trainings-manager">
+            Trainingbeheer
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.team-manager">
+            Teambeheer
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button ui-sref-active="active" ui-sref="main.players-manager">
+            Spelersbeheer
+          </md-button>
+        </md-list-item>
+        <md-list-item ng-if="vmNav.isUserLoggedIn">
+          <md-button ng-click="vmNav.logout()" ui-sref="main.home">
+            Logout
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+  <ion-nav-view name="contentView" layout="column" flex></ion-nav-view>
+</section>

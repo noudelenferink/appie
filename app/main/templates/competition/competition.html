@@ -1,0 +1,46 @@
+<ion-view cache-view="true">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+          <span>{{vm.title}}</span>
+        </h2>
+      <span flex></span>
+      <md-menu md-offset="0 75" md-position-mode="target-right target">
+        <md-button class="md-icon-button" aria-label="right-menu" ng-click="$mdOpenMenu()">
+          <i class="mdi mdi-dots-vertical"></i>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button ng-click="vm.changeSelectedCompetition(6)" ng-disabled="vm.selectedCompetitionID == 6">
+              <span>Beker</span>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="vm.changeSelectedCompetition(7)" ng-disabled="vm.selectedCompetitionID == 7">
+              <span>Competitie</span>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-tabs ng-if="vm.ready" md-dynamic-height class="md-primary">
+      <md-tab label="Uitslagen">
+        <div ui-view="results"></div>
+      </md-tab>
+      <md-tab label="Programma">
+        <div ui-view="schedule"></div>
+      </md-tab>
+      <md-tab label="Stand">
+        <div ui-view="ranking"></div>
+      </md-tab>
+      <md-tab label="Statistieken">
+        <div ui-view="stats"></div>
+      </md-tab>
+    </md-tabs>
+  </ion-content>
+</ion-view>

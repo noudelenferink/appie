@@ -1,0 +1,44 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+          <span>{{vm.title}}</span>
+        </h2>
+      <span flex></span>
+      <md-select ng-model="vm.selectedSeasonID" md-on-close="vm.getSeason()">
+        <md-option ng-repeat="s in vm.seasons" value="{{s.SeasonID}}">
+          <span>{{s.Description}}</span>
+        </md-option>
+      </md-select>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-tabs md-dynamic-height class="md-primary" md-selected="vm.selectedTab">
+      <md-tab label="Competities">
+        <md-list>
+          <md-list-item ng-repeat="c in vm.season.Competitions | orderBy:'Name'">
+            <span>{{c.Name}}</span>
+            <md-divider ng-if="!$last" />
+          </md-list-item>
+        </md-list>
+      </md-tab>
+      <md-tab label="Speeldagen">
+        <md-list>
+          <md-list-item ng-repeat="m in vm.season.Matchdays | orderBy:'Date'">
+            <span>{{m.Date | mdate:'DD-MM-YYYY'}}</span>
+            <md-divider ng-if="!$last" />
+          </md-list-item>
+        </md-list>
+      </md-tab>
+    </md-tabs>
+  </ion-content>
+  <md-button ng-class="{hidden: vm.selectedTab != 0}" class="md-fab md-primary md-fab-bottom-right" aria-label="FAB" ng-click="vm.showCreateSeasonCompetition($event)">
+    <i class="mdi mdi-plus"></i>
+  </md-button>
+  <md-button ng-class="{hidden: vm.selectedTab != 1}" class="md-fab md-primary md-fab-bottom-right" aria-label="FAB" ng-click="vm.showCreateSeasonMatchday($event)">
+    <i class="mdi mdi-plus"></i>
+  </md-button>
+</ion-view>

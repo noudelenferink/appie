@@ -1,0 +1,25 @@
+<md-dialog aria-label="training-confirm-save">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Wijzigingen:</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-list>
+        <md-list-item md-no-ink ng-repeat="ta in filteredList = (vm.training.Attendees | filter:vm.modifiedFilter)">
+          <div flex>{{ta.PlayerName}}</div>
+          <div>
+            <span class="badge badge-positive" ng-class="{green: ta.HasAttended, red: !ta.HasAttended}">{{ta.HasAttended ? 'Aanwezig' : 'Afwezig'}}</span>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelSaveTraining()">Annuleren</md-button>
+    <md-button ng-click="vm.confirmSaveTraining()" class="md-primary">Opslaan</md-button>
+  </div>
+</md-dialog>

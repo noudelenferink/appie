@@ -1,0 +1,36 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+          <span>{{vm.title}}</span>
+        </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="delete-training" ng-click="vm.showConfirmDeleteTraining()">
+          <i class="mdi mdi-delete"></i>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="undo-changes" ng-click="vm.undoChanges()" ng-show="vm.anyChanges()">
+        <i class="mdi mdi-undo"></i>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="save-training" ng-click="vm.saveTraining()" ng-show="vm.anyChanges()">
+        <i class="mdi mdi-content-save"></i>
+      </md-button>
+      <span>{{(vm.training.Attendees | filter:vm.attendedFilter).length }}</span>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-list>
+      <md-list-item md-no-ink ng-repeat="ta in vm.training.Attendees | orderBy:['SurName', 'FirstName']" ng-class="{'modified': ta.Modified}">
+        <div flex="10">{{$index + 1}}.</div>
+        <div flex>{{ta | fullname}}</div>
+        <div>
+          <md-switch class="nomargin" ng-model="ta.HasAttended" aria-label="HasAttended" ng-change="vm.updateNumAttended(ta)">
+          </md-switch>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </ion-content>
+</ion-view>

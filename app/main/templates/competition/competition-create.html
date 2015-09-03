@@ -1,0 +1,21 @@
+<md-dialog aria-label="Nieuwe competitie">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Nieuwe competitie</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-input-container>
+        <label>Naam</label>
+        <input required ng-model="vm.newCompetitionName">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelCreateSeasonCompetition()">Annuleren</md-button>
+    <md-button ng-click="vm.createSeasonCompetition()" class="md-primary">Aanmaken</md-button>
+  </div>
+</md-dialog>

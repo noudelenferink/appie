@@ -1,0 +1,70 @@
+<ion-view cache-view="false" nav-direction="none">
+  <div ui-view></div>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+        <span>{{vm.title}}</span>
+      </h2>
+      <span flex></span>
+      <md-button aria-label="save-soccermatch" ng-click="vm.saveSoccerMatch($event)">
+        <span>OPSLAAN</span>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <ion-content>
+<!--     <md-list>
+      <md-list-item nav-direction="none" ng-click="vm.gotoLineupManager()">
+        <span>Opstelling wijzigen</span>
+      </md-list-item>
+    </md-list> -->
+    <md-tabs md-dynamic-height class="md-primary">
+      <md-tab label="Uitslag">
+        <div layout="row" layout-padding>
+          <div flex="60" style="margin: auto">{{vm.soccerMatch.HomeTeam}}</div>
+          <div flex>
+            <md-input-container>
+              <label>Doelpunten</label>
+              <input type="number" min="0" ng-model="vm.soccerMatch.HomeGoals">
+            </md-input-container>
+          </div>
+        </div>
+        <div layout="row" layout-padding>
+          <div flex="60" style="margin: auto">{{vm.soccerMatch.AwayTeam}}</div>
+          <div flex>
+            <md-input-container>
+              <label>Doelpunten</label>
+              <input type="number" min="0" ng-model="vm.soccerMatch.AwayGoals">
+            </md-input-container>
+          </div>
+        </div>
+      </md-tab>
+      <!-- <md-tab label="Opstelling">
+        <md-list>
+          <md-list-item ng-repeat="sml in vm.soccerMatch.Lineup">
+            <div flex="10">{{$index + 1}}.</div>
+            <div flex>{{sml | fullname}}</div>
+            <div flex>{{sml.Position}}
+          </md-list-item>
+        </md-list>
+      </md-tab> -->
+      <md-tab label="Gebeurtenissen">
+        <md-list style="min-height: 500px;">
+          <md-list-item ng-repeat="sme in vm.soccerMatch.Events | filter:{'IsPrimaryEvent' : true}">
+            <div flex="10">{{$index + 1}}.</div>
+            <div flex>{{sme.EventName}} - {{sme | fullname}}</div>
+            <div flex ng-if="sme.ReferenceEvent">({{sme.ReferenceEvent.EventName}} {{sme.ReferenceEvent | fullname}})</div>
+            <md-button class="md-icon-button" aria-label="delete-soccer-match-event" ng-click="vm.deleteSoccerMatchEvent(sme.SoccerMatchEventID)">
+              <i class="mdi mdi-close"></i>
+            </md-button>
+          </md-list-item>
+        </md-list>
+        <md-button class="md-fab md-primary md-fab-bottom-right" aria-label="FAB" ng-click="vm.showCreateSoccerMatchEvent($event)">
+          <i class="mdi mdi-plus"></i>
+        </md-button>
+      </md-tab>
+    </md-tabs>
+  </ion-content>
+</ion-view>

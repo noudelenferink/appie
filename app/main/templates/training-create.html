@@ -1,0 +1,15 @@
+<md-dialog aria-label="Nieuwe training">
+  <md-content>
+    <div class="dialog-content">
+      <md-input-container layout="row">
+        <ng-md-icon icon="today" style="fill:grey"></ng-md-icon>
+        <input type="date" ng-model="vm.newTrainingDate">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelCreateTraining()">Annuleren</md-button>
+    <md-button ng-click="vm.confirmCreateTraining(newTrainingDate)" class="md-primary">Aanmaken</md-button>
+  </div>
+</md-dialog>

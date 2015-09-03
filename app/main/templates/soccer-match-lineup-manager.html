@@ -1,0 +1,24 @@
+<ion-view cache-view="false" nav-direction="enter">
+  <ion-content>
+    <div layout="row">
+      <md-input-container>
+        <label>Formatie</label>
+        <md-select ng-model="vm.formationID" md-on-close="vm.loadFormation()">
+          <md-option ng-repeat="f in vm.formations" ng-value="{{f.FormationID}}">{{f.Description}}</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+    <md-list>
+      <md-list-item ng-repeat="fp in vm.formation.Positions">
+        <div flex="10">{{$index + 1}}</div>
+        <div flex>{{fp.Name}}</div>
+        <div flex="30">
+          <md-select ng-model="vm.lineup[fp.PositionID]" aria-label="fp.PositionID">
+            <md-option ng-repeat="p in vm.players" ng-value="{{p.PlayerID}}">{{p | fullname}}</md-option>
+          </md-select>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </ion-content>
+</ion-view>

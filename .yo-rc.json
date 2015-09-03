@@ -1,0 +1,16 @@
+{
+  "generator-m": {
+    "answers": {
+      "appName": "appie",
+      "appId": "com.nifnic.appie",
+      "bowerPackages": [],
+      "platforms": [
+        "android"
+      ],
+      "plugins": [
+        "cordova-plugin-device"
+      ],
+      "appModule": "appie"
+    }
+  }
+}

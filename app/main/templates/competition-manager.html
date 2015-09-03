@@ -1,0 +1,58 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+          <span>{{vm.title}}</span>
+        </h2>
+      <span flex></span>
+      <md-menu md-offset="0 75" md-position-mode="target-right target">
+        <md-button class="md-icon-button" aria-label="right-menu" ng-click="$mdOpenMenu()">
+          <i class="mdi mdi-dots-vertical"></i>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button ng-click="vm.showCompetitionSelector($event)">
+              <span>Selecteer competitie...</span>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-tabs md-dynamic-height class="md-primary" md-selected="vm.selectedTab">
+      <md-tab label="Speelrondes">
+        <md-subheader>{{vm.selectedSeason.Description}}: {{vm.competition.Name}}</md-subheader>
+        <h4 ng-if="vm.competition.Rounds.length == 0">Geen speelrondes</h4>
+        <md-list>
+          <md-list-item class="md-3-line" ng-repeat="r in vm.competition.Rounds | orderBy:'Date'" ng-click="vm.showCompetitionRound(r.CompetitionRoundID)">
+            <div class="md-list-item-text">
+              <h3>Speelronde {{ r.RoundNumber }}</h3>
+              <h4>{{r.Date | mdate:'DD-MM-YYYY'}}</h4>
+              <p>Gespeeld: {{r.PlayedMatches}} Totaal: {{r.TotalMatches}}</p>
+            </div>
+            <md-divider ng-if="!$last" />
+          </md-list-item>
+        </md-list>
+      </md-tab>
+      <md-tab label="Teams">
+        <md-subheader>{{vm.competition.Name}}</md-subheader>
+        <md-list>
+          <md-list-item ng-repeat="t in vm.competition.Teams | orderBy:'TeamName'">
+            <img ng-src="{{vm.getTeamLogo(t.TeamLogoFile)}}" class="team-logo" />
+            <span>{{t.TeamName}}</span>
+            <md-divider ng-if="!$last" />
+          </md-list-item>
+        </md-list>
+      </md-tab>
+  </ion-content>
+  <md-button ng-class="{hidden: vm.selectedTab != 0}" class="md-fab md-primary md-fab-bottom-right" aria-label="FAB" ng-click="vm.showCreateCompetitionRound($event)">
+    <i class="mdi mdi-plus"></i>
+  </md-button>
+  <md-button ng-class="{hidden: vm.selectedTab != 1}" class="md-fab md-primary md-fab-bottom-right" aria-label="FAB" ng-click="vm.showAddTeam($event)">
+    <i class="mdi mdi-plus"></i>
+  </md-button>
+</ion-view>

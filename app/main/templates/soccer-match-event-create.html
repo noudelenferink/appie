@@ -1,0 +1,43 @@
+<md-dialog aria-label="Team toevoegen">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Gebeurtenis toevoegen</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-input-container>
+        <md-select placeholder="Gebeurtenis" ng-model="vm.newEvent" flex>
+          <md-option ng-repeat="e in vm.events | filter:{IsPrimaryEvent: true} | orderBy:'Name'" ng-value="e">
+            <span>{{e.Name}}</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <md-select placeholder="Speler" ng-model="vm.newEvent.PlayerID" flex>
+          <md-option ng-repeat="p in vm.players" ng-value="p.PlayerID">
+            <span>{{p | fullname}}</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <div ng-repeat="e in vm.events | filter:{ReferenceEventID: vm.newEvent.EventID}">
+        <span>{{e.Name}}</span>
+        <md-switch ng-model="vm.newEvent.References[e.EventID].HasReference" aria-label="{{e.Name}}">
+        </md-switch>
+        <md-input-container ng-if="vm.newEvent.References[e.EventID].HasReference">
+          <md-select placeholder="Speler" ng-model="vm.newEvent.References[e.EventID].PlayerID" flex>
+            <md-option ng-repeat="p in vm.players" ng-value="p.PlayerID">
+              <span>{{p | fullname}}</span>
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelAddSoccerMatchEvent()">Annuleren</md-button>
+    <md-button ng-click="vm.addSoccerMatchEvent()" class="md-primary">Toevoegen</md-button>
+  </div>
+</md-dialog>

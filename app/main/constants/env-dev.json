@@ -1,0 +1,11 @@
+{
+  "API_ENDPOINT":
+  {
+    "host": "https://localhost",
+    "port": "8080",
+    "path": "/appie-api/v1",
+    "needsAuth": "true",
+    "defaultUser": "anonymous",
+    "defaultPassword": "e6fd97f44dd2"
+  }
+}

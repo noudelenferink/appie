@@ -1,0 +1,32 @@
+<md-subheader>{{vm.selectedTeam.TeamName}}</md-subheader>
+<md-list>
+  <md-list-item>
+    <div layout="row" flex>
+      <div flex="10" class="bold">#</div>
+      <div flex class="bold">Speler</div>
+      <div flex-gt-sm="10" flex-sm="20" class="bold center">
+        <md-icon md-svg-src="main/assets/images/soccer_ball.svg" class="list-header-icon" alt="Freepik from http://www.flaticon.com"></md-icon>
+      </div>
+      <div flex-gt-sm="10" flex-sm="20" class="bold center">
+        <md-icon md-svg-src="main/assets/images/soccer_shoe.svg" class="list-header-icon" alt="Freepik from http://www.flaticon.com"></md-icon>
+      </div>
+      <div flex-gt-sm="10" flex-sm="20" class="bold center" show-gt-sm hide>
+        <md-icon md-svg-src="main/assets/images/card.svg" class="list-header-icon yellow-card" alt="Freepik from http://www.flaticon.com"></md-icon>
+      </div>
+      <div flex-gt-sm="10" flex-sm="20" class="bold center" show-gt-sm hide>
+        <md-icon md-svg-src="main/assets/images/card.svg" class="list-header-icon red-card" alt="Freepik from http://www.flaticon.com"></md-icon>
+      </div>
+    </div>
+  </md-list-item>
+  <md-list-item md-no-ink ng-repeat="cs in vm.competitionStats | orderBy:['-Goals','Penalties','-Assists','SurName']" ng-click="showPlayerDetails(cs.PlayerID)">
+    <div layout="row" flex>
+      <div flex="10">{{$index + 1}}.</div>
+      <div flex>{{cs.FullName}}</div>
+      <div flex-gt-sm="10" flex-sm="20" class="center">{{cs.Goals}} ({{cs.Penalties}})</div>
+      <div flex-gt-sm="10" flex-sm="20" class="center">{{cs.Assists}}</div>
+      <div flex-gt-sm="10" flex-sm="20" class="center" show-gt-sm hide>{{cs.YellowCards}}</div>
+      <div flex-gt-sm="10" flex-sm="20" class="center" show-gt-sm hide>{{cs.RedCards}}</div>
+    </div>
+    <md-divider ng-if="!$last"></md-divider>
+  </md-list-item>
+</md-list>

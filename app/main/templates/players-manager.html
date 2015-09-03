@@ -1,0 +1,27 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+        <i class="mdi mdi-menu"></i>
+      </md-button>
+      <h2>
+          <span>{{vm.title}}</span>
+        </h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-list>
+      <md-list-item md-no-ink ng-repeat="p in vm.players | orderBy:['SurName', 'FirstName']">
+        <div class="row">
+          <div flex="10">{{$index + 1}}.</div>
+          <div flex>{{p | fullname}}</div>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </ion-content>
+  <md-button class="md-fab md-fab-bottom-right md-primary" aria-label="create-player" ng-click="vm.showCreatePlayer()">
+    <i class="mdi mdi-plus"></i>
+  </md-button>
+</ion-view>

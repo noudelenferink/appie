@@ -1,0 +1,27 @@
+<ion-view cache-view="false" nav-direction="forward">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="vmNav.navigateBack()" aria-label="Navigate back">
+        <i class="mdi mdi-keyboard-backspace"></i>
+      </md-button>
+      <h2>
+    <span>{{vm.title}}</span>
+    </h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <ion-content>
+    <md-tabs md-dynamic-height>
+      <md-tab label="Gebeurtenissen">
+        <md-list>
+          <md-list-item ng-repeat="sme in vm.soccerMatch.Events | filter:{ReferenceSoccerMatchEventID : null} | orderBy:['Minute']">
+            <div flex="10">{{sme.Minute}}'</div>
+            <div flex>{{sme.EventName}} - {{sme | fullname}}</div>
+            <div flex ng-if="sme.ReferenceEvent">({{sme.ReferenceEvent.EventName}} {{sme.ReferenceEvent | fullname}})</div>
+            <md-divider ng-if="!$last" />
+          </md-list-item>
+        </md-list>
+      </md-tab>
+    </md-tabs>
+  </ion-content>
+</ion-view>

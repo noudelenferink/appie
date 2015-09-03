@@ -1,0 +1,10 @@
+{
+  "API_ENDPOINT":
+  {
+    "host": "https://www.nifnic.nl",
+    "path": "/appie-api/v1",
+    "needsAuth": "true",
+    "defaultUser": "anonymous",
+    "defaultPassword": "4HhDd986yn11Dkf"
+  }
+}

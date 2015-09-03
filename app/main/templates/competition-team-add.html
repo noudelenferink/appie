@@ -1,0 +1,31 @@
+<md-dialog aria-label="Team toevoegen">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Team toevoegen</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-input-container>
+        <md-select placeholder="Team" ng-model="vm.selectedTeamID" flex>
+          <md-option ng-repeat="t in vm.teams | filter:vm.usedMatchdays | orderBy:'Name'" value="{{t.TeamID}}">
+            <div layout="row">
+              <img ng-src="{{vm.getTeamLogo(t.TeamLogoFile)}}" class="team-logo" />
+              <span style="margin: auto">{{t.Name}}</span>
+            </div>
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Aanvangstijd</label>
+        <input required type="time" ng-model="vm.startTime">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelAddTeam()">Annuleren</md-button>
+    <md-button ng-click="vm.addTeam()" class="md-primary">Toevoegen</md-button>
+  </div>
+</md-dialog>

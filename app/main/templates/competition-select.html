@@ -1,0 +1,29 @@
+<md-dialog aria-label="Selecteer competitie">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Selecteer competitie</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-input-container>
+        <md-select placeholder="Seizoen" ng-model="vm.selectedSeason" md-on-close="vm.getSeasonCompetitions()" flex>
+          <md-option ng-repeat="s in vm.seasons | orderBy:'Name'" ng-value="s">{{s.Description}}</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <md-radio-group ng-model="vm.tempCompetitionID">
+          <md-radio-button ng-repeat="c in vm.competitions | orderBy:'Name'" ng-value="c.CompetitionID" aria-label="{{c.Name}}">
+            <span>{{c.Name}}</span>
+          </md-radio-button>
+        </md-radio-group>
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelCompetitionSelector()">Annuleren</md-button>
+    <md-button ng-click="vm.selectCompetition()" class="md-primary">Selecteren</md-button>
+  </div>
+</md-dialog>

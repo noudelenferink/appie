@@ -1,0 +1,32 @@
+<md-dialog aria-label="Nieuwe competitieronde">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Nieuwe competitieronde</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-input-container>
+        <md-select placeholder="Speeldag" ng-model="vm.selectedMatchdayID" flex>
+          <md-option ng-repeat="m in vm.matchdays | filter:vm.usedMatchdays | orderBy:'Date'" value="{{m.MatchdayID}}">
+            <span>{{m.Date | mdate:'dddd DD-MM-YYYY'}}</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Ronde nr.</label>
+        <input required type="number" step="1" ng-model="vm.roundNumber" min="1">
+      </md-input-container>
+      <md-input-container>
+        <label>Omschrijving</label>
+        <input type="text" ng-model="vm.description">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelCreateCompetitionRound()">Annuleren</md-button>
+    <md-button ng-click="vm.createCompetitionRound(newMatchdayDate)" class="md-primary">Aanmaken</md-button>
+  </div>
+</md-dialog>

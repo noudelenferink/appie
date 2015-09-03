@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>appie</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css main/styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="main/styles/module.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="appie">
+
+    <!-- the nav bar will be updated as we navigate between views -->
+    <!-- <ion-nav-bar> can be removed when using sidemenu (contained in menu.html) -->
+    <!-- the current view will be rendered in the <ion-nav-view> directive -->
+    <ion-nav-view></ion-nav-view>
+    <!-- <div ui-view></div> -->
+    <!-- will be a 404 during development -->
+    <script src="cordova.js"></script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="bower_components/angular-storage/dist/angular-storage.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/additional.js -->
+    <!-- additional:js -->
+    <script src="/bower_components/moment/locale/nl.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/app.js -->
+    <!-- inject:js -->
+    <script src="main/main.js"></script>
+    <script src="main/services/training-service.js"></script>
+    <script src="main/services/team-service.js"></script>
+    <script src="main/services/soccer-match-service.js"></script>
+    <script src="main/services/season-service.js"></script>
+    <script src="main/services/player-service.js"></script>
+    <script src="main/services/master-data-service.js"></script>
+    <script src="main/services/logger-service.js"></script>
+    <script src="main/services/loading-interceptor.js"></script>
+    <script src="main/services/competition-service.js"></script>
+    <script src="main/services/authentication-service.js"></script>
+    <script src="main/services/api-service.js"></script>
+    <script src="main/filters/name-filter.js"></script>
+    <script src="main/filters/moment-filter.js"></script>
+    <script src="main/controllers/trainings-manager-controller.js"></script>
+    <script src="main/controllers/trainings-controller.js"></script>
+    <script src="main/controllers/training-manager-controller.js"></script>
+    <script src="main/controllers/training-controller.js"></script>
+    <script src="main/controllers/team-manager-controller.js"></script>
+    <script src="main/controllers/soccer-match-manager-controller.js"></script>
+    <script src="main/controllers/soccer-match-manager/soccer-match-lineup-manager-controller.js"></script>
+    <script src="main/controllers/soccer-match-controller.js"></script>
+    <script src="main/controllers/season-controller.js"></script>
+    <script src="main/controllers/players-manager-controller.js"></script>
+    <script src="main/controllers/navigation-controller.js"></script>
+    <script src="main/controllers/login-controller.js"></script>
+    <script src="main/controllers/home-controller.js"></script>
+    <script src="main/controllers/competitions-controller.js"></script>
+    <script src="main/controllers/competition-round-manager-controller.js"></script>
+    <script src="main/controllers/competition-manager-controller.js"></script>
+    <script src="main/constants/constants.js"></script>
+    <script src="main/constants/config-const.js"></script>
+    <script src="app.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+  </body>
+</html>

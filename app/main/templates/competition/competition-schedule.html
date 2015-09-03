@@ -1,0 +1,31 @@
+<md-switch ng-model="vm.showAllTeamsSchedule" aria-label="Show schedule for all teams">
+  Alle teams
+</md-switch>
+<md-list ng-if="!vm.showAllTeamsSchedule">
+  <md-list-item md-no-ink ng-repeat="sm in vm.soccerMatches | filter:{SoccerMatchStatusID:'!PLD'} | filter:vm.filterSelectedTeam | orderBy:'MatchDate'" ng-click="showSoccerMatchDetails(sm.MatchID)">
+    <div class="row">
+      <div flex="10">{{$index + 1}}.</div>
+      <div flex="10">{{sm.MatchDate | mdate:'DD-MM' }}.</div>
+      <div flex class="right">{{sm.HomeTeamName}}</div>
+      <div flex="20" class="center">{{sm.HomeGoals}} - {{sm.AwayGoals}}</div>
+      <div flex>{{sm.AwayTeamName}}</div>
+    </div>
+    <md-divider ng-if="!$last"></md-divider>
+  </md-list-item>
+</md-list>
+<md-card ng-if="vm.showAllTeamsSchedule" ng-repeat="group in vm.soccerMatchesGrouped | filter:vm.scheduleGroupFilter | orderBy:vm.castKeyToDate" >
+  <md-card-content>
+    <h2 class="md-title">{{group.$key | mdate:'DD-MM-YYYY'}}</h2>
+    <md-list>
+      <md-list-item md-no-ink ng-repeat="sm in group | filter:{SoccerMatchStatusID:'!PLD'}" ng-click="showSoccerMatchDetails(sm.MatchID)">
+        <div class="row">
+          <div flex="10">{{$index + 1}}.</div>
+          <div flex class="right">{{sm.HomeTeamName}}</div>
+          <div flex="20" class="center">{{sm.HomeGoals}} - {{sm.AwayGoals}}</div>
+          <div flex>{{sm.AwayTeamName}}</div>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>

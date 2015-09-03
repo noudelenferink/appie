@@ -1,0 +1,21 @@
+<md-dialog aria-label="Nieuwe speeldag">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Nieuwe speeldag</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div class="dialog-content">
+      <md-input-container layout="row">
+        <i class="mdi mdi-calendar"></i>
+        <input type="date" ng-model="vm.newMatchdayDate">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelCreateSeasonMatchday()">Annuleren</md-button>
+    <md-button ng-click="vm.createSeasonMatchday(newMatchdayDate)" class="md-primary">Aanmaken</md-button>
+  </div>
+</md-dialog>

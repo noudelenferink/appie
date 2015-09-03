@@ -1,0 +1,31 @@
+<md-dialog aria-label="Nieuwe wedstrijd">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Nieuwe wedstrijd</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div class="dialog-content">
+      <md-input-container>
+        <md-select placeholder="Thuisteam" ng-model="vm.selectedHomeTeamID" flex>
+          <md-option ng-repeat="t in vm.teams | filter:vm.usedTeams | orderBy:'TeamName'" value="{{t.TeamID}}">
+            <span>{{t.TeamName}}</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <md-select placeholder="Uitteam" ng-model="vm.selectedAwayTeamID" flex>
+          <md-option ng-repeat="t in vm.teams | filter:vm.usedTeams | filter: {TeamID: '!' + vm.selectedHomeTeamID} | orderBy:'TeamName'" value="{{t.TeamID}}">
+            <span>{{t.TeamName}}</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.cancelCreateSoccerMatch()">Annuleren</md-button>
+    <md-button ng-click="vm.createSoccerMatch()" class="md-primary">Aanmaken</md-button>
+  </div>
+</md-dialog>
