@@ -25,4 +25,5 @@
 *.sublime-workspace
 
 # Custom
-app/main/constants*.json
+app/main/constants/*.json
+app/main/constants/config-const.js
