@@ -2,7 +2,7 @@
   <md-toolbar>
     <div class="md-toolbar-tools">
       <md-button class="md-icon-button" ng-click="vmNav.navigateBack()" aria-label="Navigate back">
-        <i class="mdi mdi-keyboard-backspace"></i>
+        <i class="mdi mdi-arrow-left"></i>
       </md-button>
       <h2>
     <span>{{vm.title}}</span>
@@ -11,13 +11,51 @@
     </div>
   </md-toolbar>
   <ion-content>
-    <md-tabs md-dynamic-height>
+    <md-tabs md-dynamic-height class="md-primary">
       <md-tab label="Gebeurtenissen">
         <md-list>
           <md-list-item ng-repeat="sme in vm.soccerMatch.Events | filter:{ReferenceSoccerMatchEventID : null} | orderBy:['Minute']">
             <div flex="10">{{sme.Minute}}'</div>
-            <div flex>{{sme.EventName}} - {{sme | fullname}}</div>
-            <div flex ng-if="sme.ReferenceEvent">({{sme.ReferenceEvent.EventName}} {{sme.ReferenceEvent | fullname}})</div>
+            <!-- GOAL -->
+            <div ng-if="sme.EventID == 1" flex>
+              <div>
+                <md-icon md-svg-src="main/assets/images/soccer_ball.svg" class="list-icon" alt="Freepik from http://www.flaticon.com"></md-icon>
+                <span>{{sme | fullname}}</span>
+                <!-- PENALTY -->
+                <span ng-if="sme.ReferenceEvent && sme.ReferenceEvent.EventID == 5"> (P)</span>
+              </div>
+              <!-- ASSIST -->
+              <div ng-if="sme.ReferenceEvent && sme.ReferenceEvent.EventID == 7">
+                <md-icon md-svg-src="main/assets/images/soccer_shoe.svg" class="list-icon" alt="Freepik from http://www.flaticon.com"></md-icon>
+                <span>{{sme.ReferenceEvent | fullname}}</span>
+              </div>
+            </div>
+            <!-- YELLOW CARD -->
+            <div ng-if="sme.EventID == 2" flex>
+              <div>
+                <md-icon md-svg-src="main/assets/images/card.svg" class="list-icon yellow-card" alt="Freepik from http://www.flaticon.com"></md-icon>
+                <span>{{sme | fullname}}</span>
+              </div>
+            </div>
+            <!-- RED CARD -->
+            <div ng-if="sme.EventID == 3" flex>
+              <div>
+                <md-icon ng-if="sme.ReferenceEvent" md-svg-src="main/assets/images/2nd_card.svg" class="list-icon yellow-card" alt="Freepik from http://www.flaticon.com"></md-icon>
+                <md-icon md-svg-src="main/assets/images/card.svg" class="list-icon red-card" alt="Freepik from http://www.flaticon.com"></md-icon>
+                <span>{{sme | fullname}}</span>
+              </div>
+            </div>
+            <!-- SUBSTITUTE -->
+            <div ng-if="sme.EventID == 4" flex>
+              <div>
+                <i class="mdi mdi-arrow-left sub-icon-out"></i>
+                <span>{{sme | fullname}}</span>
+              </div>
+              <div ng-if="sme.ReferenceEvent" flex>
+                <i class="mdi mdi-arrow-right sub-icon-in"></i>
+                <span>{{sme.ReferenceEvent | fullname}}</span>
+              </div>
+            </div>
             <md-divider ng-if="!$last" />
           </md-list-item>
         </md-list>

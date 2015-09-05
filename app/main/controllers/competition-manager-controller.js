@@ -10,6 +10,7 @@
     '$state',
     'logger',
     '$mdDialog',
+    'moment',
     'CompetitionService',
     'SeasonService',
     'AuthenticationService',
@@ -21,6 +22,7 @@
     $state,
     logger,
     $mdDialog,
+    moment,
     CompetitionService,
     SeasonService,
     AuthenticationService,
@@ -67,6 +69,9 @@
       CompetitionService.getCompetition(vm.selectedCompetitionID)
         .then(function (response) {
           vm.competition = response.data.Competition;
+          vm.competition.Teams.forEach(function (x) {
+            x.DefaultStartTime = moment(x.DefaultStartTime, 'hh:mm');
+          });
         });
     }
 
@@ -184,7 +189,7 @@
       var newCompetitionTeam = {
         'CompetitionID': vm.selectedCompetitionID,
         'TeamID': vm.selectedTeamID,
-        'DefaultStartTime': vm.startTime ? vm.startTime : null,
+        'DefaultStartTime': vm.startTime ? vm.startTime.toLocaleTimeString() : null,
       };
       logger.log(newCompetitionTeam);
       CompetitionService.createCompetitionTeam(newCompetitionTeam)

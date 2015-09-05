@@ -135,6 +135,7 @@
     function addSoccerMatchEvent() {
       var newSoccerMatchEvent = {
         'SoccerMatchID': vm.soccerMatch.SoccerMatchID,
+        'Minute': vm.newEvent.Minute,
         'EventID': vm.newEvent.EventID,
         'PlayerID': vm.newEvent.PlayerID
       };
@@ -148,6 +149,7 @@
                 var newReferenceEvent = {
                   'ReferenceSoccerMatchEventID': response.data.SoccerMatchEventID,
                   'SoccerMatchID': vm.soccerMatch.SoccerMatchID,
+                  'Minute': vm.newEvent.Minute,
                   'EventID': item.$key,
                   'PlayerID': item.PlayerID ? item.PlayerID : null
                 };

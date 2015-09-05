@@ -9,6 +9,7 @@
     '$mdSidenav',
     '$filter',
     '$state',
+    'moment',
     'AuthenticationService',
     'CompetitionService',
     'SoccerMatchService',
@@ -20,6 +21,7 @@
     $mdSidenav,
     $filter,
     $state,
+    moment,
     AuthenticationService,
     CompetitionService,
     SoccerMatchService,
@@ -63,6 +65,9 @@
       SoccerMatchService.getSoccerMatchesByCompetition(vm.selectedCompetitionID)
         .then(function (response) {
           vm.soccerMatches = response.data.SoccerMatches;
+          vm.soccerMatches.forEach(function (x) {
+            x.DefaultStartTime = moment(x.DefaultStartTime, 'hh:mm');
+          });
           //vm.$broadcast('scroll.refreshComplete');
           vm.soccerMatchesGrouped = $filter('toArray')($filter('groupBy')(vm.soccerMatches, 'MatchDate'), true);
           vm.calculateCompetitionRanking();

@@ -15,6 +15,10 @@
         </md-select>
       </md-input-container>
       <md-input-container>
+        <label>Minuut</label>
+        <input required type="number" step="1" ng-model="vm.newEvent.Minute" min="0">
+      </md-input-container>
+      <md-input-container>
         <md-select placeholder="Speler" ng-model="vm.newEvent.PlayerID" flex>
           <md-option ng-repeat="p in vm.players" ng-value="p.PlayerID">
             <span>{{p | fullname}}</span>

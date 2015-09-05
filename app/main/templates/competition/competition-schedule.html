@@ -2,13 +2,28 @@
   Alle teams
 </md-switch>
 <md-list ng-if="!vm.showAllTeamsSchedule">
-  <md-list-item md-no-ink ng-repeat="sm in vm.soccerMatches | filter:{SoccerMatchStatusID:'!PLD'} | filter:vm.filterSelectedTeam | orderBy:'MatchDate'" ng-click="showSoccerMatchDetails(sm.MatchID)">
+<!--   <md-list-item md-no-ink ng-repeat="sm in vm.soccerMatches | filter:{SoccerMatchStatusID:'!PLD'} | filter:vm.filterSelectedTeam | orderBy:'MatchDate'" ng-click="showSoccerMatchDetails(sm.MatchID)">
     <div class="row">
       <div flex="10">{{$index + 1}}.</div>
       <div flex="10">{{sm.MatchDate | mdate:'DD-MM' }}.</div>
       <div flex class="right">{{sm.HomeTeamName}}</div>
       <div flex="20" class="center">{{sm.HomeGoals}} - {{sm.AwayGoals}}</div>
       <div flex>{{sm.AwayTeamName}}</div>
+    </div>
+    <md-divider ng-if="!$last"></md-divider>
+  </md-list-item> -->
+  <md-list-item class="md-2-line" ng-repeat="sm in vm.soccerMatches | filter:{SoccerMatchStatusID:'!PLD'} | filter:vm.filterSelectedTeam | orderBy:'MatchDate'" ng-click="showSoccerMatchDetails(sm.MatchID)">
+    <img ng-src="{{vm.getTeamLogoPath(sm.HomeTeamID == vm.selectedTeam.TeamID ? sm.AwayTeamLogo : sm.HomeTeamLogo)}}" class="md-avatar no-radius" />
+    <div class="md-list-item-text" flex>
+      <h3>{{ sm.HomeTeamID == vm.selectedTeam.TeamID ? sm.AwayTeamName : sm.HomeTeamName }}</h3>
+      <p>
+        <span class="bold">{{sm.HomeTeamID == vm.selectedTeam.TeamID ? 'T' : 'U'}}</span>
+        <span> | Ronde: {{sm.RoundNumber}}</span>
+      </p>
+    </div>
+    <div flex-gt-sm="10" flex-sm="20" class="sm-list-secondary center">
+      <div class="sm-result">{{sm.MatchDate | mdate:'DD MMM'}}</div>
+      <div class="sm-match-date">{{sm.DefaultStartTime | mdate:'hh:mm'}}</div>
     </div>
     <md-divider ng-if="!$last"></md-divider>
   </md-list-item>

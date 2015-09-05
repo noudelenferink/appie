@@ -43,7 +43,8 @@
         <md-list>
           <md-list-item ng-repeat="t in vm.competition.Teams | orderBy:'TeamName'">
             <img ng-src="{{vm.getTeamLogo(t.TeamLogoFile)}}" class="team-logo" />
-            <span>{{t.TeamName}}</span>
+            <span flex>{{t.TeamName}}</span>
+            <span>{{t.DefaultStartTime | mdate:'hh:mm'}}</span>
             <md-divider ng-if="!$last" />
           </md-list-item>
         </md-list>

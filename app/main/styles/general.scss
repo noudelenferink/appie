@@ -36,11 +36,50 @@ md-toolbar h2 {
   text-align: right;
 }
 
+.sm-list-secondary {
+  padding-top: 19px;
+  padding-bottom: 19px;
+}
+
+.sm-result {
+  font-size: 105%;
+  font-weight: 600;
+  line-height: 1.6em;
+}
+
+.sm-match-date {
+  font-size: 85%;
+  line-height: 1.6em;
+}
+
 .list-header-icon {
   fill: #000;
   fill-opacity: 0.87;
   width: 20px;
   height: 20px;
+}
+
+.list-icon {
+  fill: #000;
+  fill-opacity: 0.87;
+  width: 20px;
+  height: 20px;
+  padding: 1px;
+  margin-top: -2px;
+}
+
+md-list-item .md-list-item-inner .md-avatar.no-radius {
+    border-radius: 0;
+}
+
+.sub-icon-out {
+  font-weight: bold;
+  color: #9E1212;
+}
+
+.sub-icon-in {
+  font-weight: bold;
+  color: #5DAD5E;
 }
 
 .yellow-card {
