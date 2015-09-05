@@ -69,9 +69,6 @@
       CompetitionService.getCompetition(vm.selectedCompetitionID)
         .then(function (response) {
           vm.competition = response.data.Competition;
-          vm.competition.Teams.forEach(function (x) {
-            x.DefaultStartTime = moment(x.DefaultStartTime, 'hh:mm');
-          });
         });
     }
 
