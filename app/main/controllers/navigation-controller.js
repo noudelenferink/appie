@@ -11,11 +11,22 @@
     '$ionicHistory',
     '$mdSidenav',
     '$rootScope',
+    'aiStorage',
+    'jwtHelper',
     'logger',
     'AuthenticationService'
   ];
 
-  function Navigation($scope, $state, $ionicHistory, $mdSidenav, $rootScope, logger, AuthenticationService) {
+  function Navigation(
+    $scope,
+    $state,
+    $ionicHistory,
+    $mdSidenav,
+    $rootScope,
+    aiStorage,
+    jwtHelper,
+    logger,
+    AuthenticationService) {
     console.log('Controller [Navigation] started:', this);
 
     var vm = this;
@@ -49,7 +60,6 @@
     function loginAnonymous() {
       AuthenticationService.processLogin()
         .then(function () {
-          $state.go('main.home');
         });
     }
 
@@ -58,7 +68,17 @@
       loginAnonymous();
     }
 
-    $rootScope.$on('$stateChangeSuccess',
+    $rootScope.$on('$stateChangeStart', function (e, to) {
+      var token = aiStorage.get('jwt');
+      if (!token || jwtHelper.isTokenExpired(token)) {
+        e.preventDefault();
+        console.log('token is missing or expired');
+        $rootScope.currentUser = null;
+        loginAnonymous();
+      }
+    });
+
+    $rootScope.$on('$viewContentLoading',
       function (event, toState, toParams, fromState, fromParams) {
         $mdSidenav('left').close();
       });

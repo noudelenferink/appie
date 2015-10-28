@@ -65,10 +65,44 @@
       SoccerMatchService.getSoccerMatchesByCompetition(vm.selectedCompetitionID)
         .then(function (response) {
           vm.soccerMatches = response.data.SoccerMatches;
-          //vm.$broadcast('scroll.refreshComplete');
-          vm.soccerMatchesGrouped = $filter('toArray')($filter('groupBy')(vm.soccerMatches, 'MatchDate'), true);
+          var totalMatches = vm.soccerMatches.length;
+          for (var i = 0; i < totalMatches; i++) {
+            var sm = vm.soccerMatches[i];
+            if (sm.FallbackDateTime) {
+              sm.PlayDate = moment(sm.FallbackDateTime);
+              sm.PlayTime = moment(sm.FallbackDateTime).format('hh:mm');
+            } else {
+              sm.PlayDate = sm.MatchDate;
+              sm.PlayTime = sm.DefaultStartTime;
+            }
+            if (sm.HomeTeamID === vm.selectedTeam.TeamID || sm.AwayTeamID === vm.selectedTeam.TeamID) {
+              sm.ResultIndicator = determineResult(sm);
+              vm.soccerMatches[i] = sm;
+            }
+          }
+          vm.soccerMatchesGrouped = $filter('toArray')($filter('groupBy')(vm.soccerMatches, 'PlayDate'), true);
           vm.calculateCompetitionRanking();
         });
+    }
+
+    function determineResult(sm) {
+      var teamGoals = null;
+      var oponentGoals = null;
+      if (sm.HomeTeamID === vm.selectedTeam.TeamID) {
+        teamGoals = sm.HomeGoals;
+        oponentGoals = sm.AwayGoals;
+      } else {
+        teamGoals = sm.AwayGoals;
+        oponentGoals = sm.HomeGoals;
+      }
+
+      if (teamGoals > oponentGoals) {
+        return 'W';
+      } else if (teamGoals === oponentGoals) {
+        return 'G';
+      } else {
+        return 'V';
+      }
     }
 
     function resultGroupFilter(group) {

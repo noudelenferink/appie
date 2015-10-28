@@ -1,9 +1,23 @@
 <ion-view cache-view="false" nav-direction="enter">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ui-sref="main.soccer-match-manager" aria-label="NavigationMenu">
+          <i class="mdi mdi-arrow-left"></i>
+        </md-button>
+        <h2>
+        <span>{{vm.title}}</span>
+      </h2>
+        <span flex></span>
+        <md-button aria-label="save-soccermatch" ng-click="">
+          <span>OPSLAAN</span>
+        </md-button>
+      </div>
+    </md-toolbar>
   <ion-content>
     <div layout="row">
       <md-input-container>
         <label>Formatie</label>
-        <md-select ng-model="vm.formationID" md-on-close="vm.loadFormation()">
+        <md-select ng-model="vm.soccerMatch.FormationID" md-on-close="vm.loadFormation()">
           <md-option ng-repeat="f in vm.formations" ng-value="{{f.FormationID}}">{{f.Description}}</md-option>
         </md-select>
       </md-input-container>

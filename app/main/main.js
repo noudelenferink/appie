@@ -69,7 +69,7 @@ angular.module('main', [
   $stateProvider
   // this state is placed in the <ion-nav-view> in the index.html
     .state('main', {
-      url: '/main',
+      url: '',
       abstract: true,
       templateUrl: 'main/templates/menu.html',
       controller: 'Navigation as vmNav',
@@ -221,7 +221,7 @@ angular.module('main', [
       }
     });
 
-  $urlRouterProvider.otherwise('/main/home');
+  $urlRouterProvider.otherwise('/home');
 });
 
 function runBlock(moment) {

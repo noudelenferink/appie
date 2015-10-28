@@ -1,0 +1,27 @@
+<ion-view cache-view="false" nav-direction="none">
+  <div ui-view>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="vmNav.toggleSidenav()" aria-label="NavigationMenu">
+          <i class="mdi mdi-menu"></i>
+        </md-button>
+        <h2>
+        <span>{{vm.title}}</span>
+      </h2>
+        <span flex></span>
+        <md-button aria-label="save-soccermatch" ng-click="vm.saveSoccerMatch($event)">
+          <span>OPSLAAN</span>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <ion-content>
+      <md-list>
+        <md-list-item>
+          <md-button ui-sref='main.soccer-match-manager.lineup'>
+            <span>Opstelling wijzigen</span>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </ion-content>
+  </div>
+</ion-view>

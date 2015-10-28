@@ -2,12 +2,21 @@ md-toolbar h2 {
   color: white;
 }
 
+md-card md-list md-list-item.layout-fill {
+  padding: 10px 0;
+  font-size: 85%;
+}
+
 .md-fab-tab {
   margin-top: 56px;
 }
 
 .hidden {
   display: none;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .modified {
@@ -97,6 +106,14 @@ md-list-item .md-list-item-inner .md-avatar.no-radius {
   background-color: #9E1212;
 }
 
+.win {
+  color: #5DAD5E;
+}
+
+.loss {
+  color: #9E1212;
+}
+
 .white {
   fill: white;
 }
@@ -111,7 +128,7 @@ md-list-item .md-list-item-inner .md-avatar.no-radius {
 }
 
 ion-content {
-  top: 63px !important;
+  top: 56px !important;
 }
 
 body {

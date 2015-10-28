@@ -1,5 +1,5 @@
-<section layout="row" flex>
-  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+<section layout="column" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" layout="column" flex>
     <!-- md-is-locked-open="$mdMedia('gt-md')"> -->
     <md-toolbar>
       <h2 class="md-toolbar-tools">{{vmNav.currentUser.username}}</h2>
@@ -27,27 +27,27 @@
             Login
           </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item  ng-if="vmNav.isUserLoggedIn">
           <md-button ui-sref-active="active" ui-sref="main.season">
-            Seizoenen
+            Seizoenbeheer
           </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item ng-if="vmNav.isUserLoggedIn">
           <md-button ui-sref-active="active" ui-sref="main.competition-manager">
             Competitiebeheer
           </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item  ng-if="vmNav.isUserLoggedIn">
           <md-button ui-sref-active="active" ui-sref="main.trainings-manager">
             Trainingbeheer
           </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item  ng-if="vmNav.isUserLoggedIn">
           <md-button ui-sref-active="active" ui-sref="main.team-manager">
             Teambeheer
           </md-button>
         </md-list-item>
-        <md-list-item>
+        <md-list-item ng-if="vmNav.isUserLoggedIn">
           <md-button ui-sref-active="active" ui-sref="main.players-manager">
             Spelersbeheer
           </md-button>

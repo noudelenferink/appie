@@ -26,7 +26,7 @@
       AuthenticationService.processLogin(credentials)
         .then(function () {
           logger.success('Successfully logged in', null);
-          $state.go('main.home');
+          //$state.go('main.home');
         });
     }
   }

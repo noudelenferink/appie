@@ -7,7 +7,7 @@
   </md-toolbar>
   <md-content layout-padding>
     <div class="dialog-content">
-      <md-input-container>
+            <md-input-container>
         <md-select placeholder="Gebeurtenis" ng-model="vm.newEvent" flex>
           <md-option ng-repeat="e in vm.events | filter:{IsPrimaryEvent: true} | orderBy:'Name'" ng-value="e">
             <span>{{e.Name}}</span>
@@ -36,7 +36,16 @@
             </md-option>
           </md-select>
         </md-input-container>
-      </div>
+      <!-- NIEUW -->
+      <!-- <md-input-container>
+        <md-select placeholder="Gebeurtenis" ng-model="vm.newEventID" flex>
+          <md-option ng-repeat="e in vm.events | filter:{IsPrimaryEvent: true} | orderBy:'Name'" ng-value="e.EventID">
+            <span>{{e.Name}}</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+        <soccermatchevent eventID="1" ng-if="vm.newEventID"></soccermatchevent> -->
+    </div>
     </div>
   </md-content>
   <div class="md-actions" layout="row">

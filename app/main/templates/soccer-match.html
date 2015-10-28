@@ -23,6 +23,8 @@
                 <span>{{sme | fullname}}</span>
                 <!-- PENALTY -->
                 <span ng-if="sme.ReferenceEvent && sme.ReferenceEvent.EventID == 5"> (P)</span>
+                <!-- PENALTY -->
+                <span ng-if="sme.ReferenceEvent && sme.ReferenceEvent.EventID == 8">Eigen doelpunt</span>
               </div>
               <!-- ASSIST -->
               <div ng-if="sme.ReferenceEvent && sme.ReferenceEvent.EventID == 7">

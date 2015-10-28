@@ -9,6 +9,7 @@
     '$mdDialog',
     '$scope',
     '$state',
+    '$window',
     'logger',
     'MasterDataService',
     'PlayerService'
@@ -18,6 +19,7 @@
     $mdDialog,
     $scope,
     $state,
+    $window,
     logger,
     MasterDataService,
     PlayerService
@@ -27,16 +29,16 @@
 
     var vm = this;
     vm.title = 'Opstelling bewerken';
-
+    vm.soccerMatch = $scope.$parent.vm.soccerMatch;
     vm.loadFormation = loadFormation;
-
+    vm.navigateBack = navigateBack;
     activate();
     ////////////////////////////////
 
     function activate() {
-      // if(vm.soccerMatch.FormationID) {
-      //   getFormation(vm.soccerMatch.FormationID);
-      // }
+      if (vm.soccerMatch.FormationID) {
+        loadFormation(vm.soccerMatch.FormationID);
+      }
 
       loadFormations();
       loadPlayers();
@@ -49,8 +51,8 @@
         });
     }
 
-    function loadFormation() {
-      MasterDataService.getFormation(vm.formationID)
+    function loadFormation(formationID) {
+      MasterDataService.getFormation(formationID)
         .then(function (response) {
           vm.formation = response.data.Formation;
         });
@@ -61,6 +63,10 @@
         .then(function (response) {
           vm.players = response.data.Players;
         });
+    }
+
+    function navigateBack() {
+      $window.history.back();
     }
   }
 })();
