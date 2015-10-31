@@ -41,8 +41,15 @@
     ////////////////////////////////
 
     function activate() {
-      vm.loginAnonymous();
-
+      var token = aiStorage.get('jwt');
+      if (!token || jwtHelper.isTokenExpired(token)) {
+        e.preventDefault();
+        console.log('token is missing or expired');
+        $rootScope.currentUser = null;
+        loginAnonymous();
+      }  else {
+        AuthenticationService.decodeToken(token);
+      }
       $scope.$watch(AuthenticationService.getIsUserLoggedIn, function (current, original) {
         vm.isUserLoggedIn = current;
         vm.currentUser = AuthenticationService.getCurrentUser();

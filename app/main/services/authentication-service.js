@@ -22,7 +22,8 @@
       getDefaultSeason: getDefaultSeason,
       getDefaultCompetitionID: getDefaultCompetitionID,
       getDefaultTeam: getDefaultTeam,
-      getRegisteredTeams: getRegisteredTeams
+      getRegisteredTeams: getRegisteredTeams,
+      decodeToken: decodeToken,
     };
 
     return service;

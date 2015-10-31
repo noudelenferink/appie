@@ -10,16 +10,19 @@
       <div flex-gt-sm="10" flex-sm="20" class="bold center">
         <md-icon md-svg-src="main/assets/images/soccer_shoe.svg" class="list-header-icon" alt="Freepik from http://www.flaticon.com"></md-icon>
       </div>
-      <div flex-gt-sm="10" flex-sm="20" class="bold center" show-gt-sm hide>
+      <div flex-gt-sm="10" class="bold center" show-gt-sm hide>
         <md-icon md-svg-src="main/assets/images/card.svg" class="list-header-icon yellow-card" alt="Freepik from http://www.flaticon.com"></md-icon>
       </div>
-      <div flex-gt-sm="10" flex-sm="20" class="bold center" show-gt-sm hide>
+      <div flex-gt-sm="10" class="bold center" show-gt-sm hide>
         <md-icon md-svg-src="main/assets/images/card.svg" class="list-header-icon red-card" alt="Freepik from http://www.flaticon.com"></md-icon>
       </div>
-      <div flex-gt-sm="10" flex-sm="20" class="bold center" show-gt-sm hide>
+      <div flex-gt-sm="5" class="bold center" show-gt-sm hide>
         <md-icon md-svg-src="main/assets/images/soccer_shirt.svg" class="list-header-icon" alt="Freepik from http://www.flaticon.com"></md-icon>
       </div>
-      <div flex-gt-sm="10" flex-sm="20" class="bold center" show-gt-sm hide>
+      <div flex-gt-sm="5" class="bold center" show-gt-sm hide>
+        <md-icon md-svg-src="main/assets/images/armchair.svg" class="list-header-icon" alt="Freepik from http://www.flaticon.com"></md-icon>
+      </div>
+      <div flex-gt-sm="5" class="bold center" show-gt-sm hide>
         <i class="mdi mdi-timer"></i>
       </div>
     </div>
@@ -31,10 +34,11 @@
       <div flex>{{cs.FullName}}</div>
       <div flex-gt-sm="10" flex-sm="20" class="center">{{cs.Goals}}&nbsp;<span class="absolute" ng-if="cs.Penalties > 0">({{cs.Penalties}})</span></div>
       <div flex-gt-sm="10" flex-sm="20" class="center">{{cs.Assists}}</div>
-      <div flex-gt-sm="10" flex-sm="20" class="center" show-gt-sm hide>{{cs.YellowCards}}</div>
-      <div flex-gt-sm="10" flex-sm="20" class="center" show-gt-sm hide>{{cs.RedCards}}</div>
-      <div flex-gt-sm="10" flex-sm="20" class="center" show-gt-sm hide>{{cs.Appearances}}</div>
-      <div flex-gt-sm="10" flex-sm="20" class="center" show-gt-sm hide>{{cs.Minutes}}</div>
+      <div flex-gt-sm="10" class="center" show-gt-sm hide>{{cs.YellowCards}}</div>
+      <div flex-gt-sm="10" class="center" show-gt-sm hide>{{cs.RedCards}}</div>
+      <div flex-gt-sm="5" class="center" show-gt-sm hide>{{cs.Appearances}}</div>
+      <div flex-gt-sm="5" class="center" show-gt-sm hide>{{cs.MatchesOnBench}}</div>
+      <div flex-gt-sm="5" class="center" show-gt-sm hide>{{cs.Minutes}}</div>
     </div>
     <md-divider ng-if="!$last"></md-divider>
   </md-list-item>
